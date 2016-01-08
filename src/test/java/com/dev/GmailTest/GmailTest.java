@@ -30,7 +30,6 @@ public class GmailTest {
 		driver.findElement(By.id("next")).click();
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		driver.findElement(By.xpath(".//*[@id='Passwd']")).sendKeys("epatchdev1234");
-		;
 		driver.findElement(By.id("signIn")).click();
 
 		// verify login
