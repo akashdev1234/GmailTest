@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.dev.Pom;
+package com.dev.PageFactory;
 
 /**
  * @author Akash Dev
