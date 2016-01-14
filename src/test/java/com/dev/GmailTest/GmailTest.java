@@ -14,6 +14,10 @@ import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.Test;
 
+import com.dev.Library.utils;
+import com.dev.WebPageFactory.EmailHomePage;
+import com.dev.WebPageFactory.SignInPage;
+
 /**
  * @author Akash Dev
  *
@@ -24,23 +28,25 @@ public class GmailTest {
 
 	@Test
 	public void SignIn() {
+		// Goto Gmail website
+		SignInPage signin = utils.gotoSignIn(driver);
+		// fill in username
+		SignInPage.FillUSerName(driver, "testgit1234@gmail.com");
+		// Click Next
+		SignInPage.ClickNext1(driver);
+		// fill in password
+		SignInPage.FillPassword(driver, "epatchdev1234");
+		// Click Next
+		EmailHomePage emailHomepage = SignInPage.ClickNext2(driver);
 
-		driver.get("http://www.gmail.com");
-		driver.findElement(By.id("Email")).sendKeys("testgit1234@gmail.com");
-		driver.findElement(By.id("next")).click();
-		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-		driver.findElement(By.xpath(".//*[@id='Passwd']")).sendKeys("epatchdev1234");
-		driver.findElement(By.id("signIn")).click();
 		// verify login
-		WebDriverWait wait = new WebDriverWait(driver, 3000);
-		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(".//span[@class='gb_Nb']")));
-		Assert.assertTrue(driver.findElements(By.partialLinkText("Inbox")).size() > 0, "Inbox Should exist");
-		
-		driver.findElement(By.xpath("//span[@class='gb_Za gbii']")).click();
-		driver.manage().timeouts().implicitlyWait(200, TimeUnit.MILLISECONDS);
-		driver.findElement(By.xpath(".//*[@id='gb_71']")).click();
-		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='logo logo-w']")));
-		Assert.assertTrue(driver.findElements(By.partialLinkText("Need help?")).size() > 0, "Need help should appear");
+		Assert.assertTrue(emailHomepage.isInboxExists(driver), "Inbox Should exist");
+
+		// signout
+		EmailHomePage.signOut(driver);
+
+		// verify if user signout
+		Assert.assertTrue(SignInPage.isElementExists(driver), "Need help should appear");
 	}
 
 	@AfterTest
