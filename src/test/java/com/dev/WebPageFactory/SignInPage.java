@@ -17,24 +17,23 @@ import com.dev.Library.utils;
  */
 public class SignInPage {
 
-	public static void FillUSerName(WebDriver driver, String string) {
+	public void FillUSerName(WebDriver driver, String string) {
 		utils.fill(driver, By.id("Email"), "testgit1234@gmail.com");
 
 	}
 
-	public static void FillPassword(WebDriver driver, String string) {
+	public void FillPassword(WebDriver driver, String string) {
 		utils.fill(driver, By.xpath(".//*[@id='Passwd']"), "epatchdev1234");
 
 	}
 
-	public static void ClickNext1(WebDriver driver) {
+	public void ClickNext1(WebDriver driver) {
 		utils.click(driver, By.id("next"));
-		utils.wait(driver,30,TimeUnit.SECONDS);
-		
+		utils.wait(driver, 30, TimeUnit.SECONDS);
 
 	}
 
-	public static EmailHomePage ClickNext2(WebDriver driver) {
+	public EmailHomePage ClickNext2(WebDriver driver) {
 		utils.click(driver, By.id("signIn"));
 		utils.waitForElementVisible(driver, By.xpath(".//span[@class='gb_Nb']"));
 
@@ -42,8 +41,8 @@ public class SignInPage {
 
 	}
 
-	public static boolean isElementExists(WebDriver driver) {
-		return utils.isElementPresent(driver,By.partialLinkText("Need help?"));
+	public boolean isElementExists(WebDriver driver) {
+		return utils.isElementPresent(driver, By.partialLinkText("Need help?"));
 	}
 
 }

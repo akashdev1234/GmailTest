@@ -19,12 +19,12 @@ import com.dev.Library.utils;
  */
 public class EmailHomePage {
 
-	public static SignInPage signOut(WebDriver driver) {
+	public SignInPage signOut(WebDriver driver) {
 		utils.click(driver, By.xpath("//span[@class='gb_Za gbii']"));
 		utils.wait(driver, 200, TimeUnit.MILLISECONDS);
 		utils.click(driver, By.xpath(".//*[@id='gb_71']"));
 		utils.waitForElementVisible(driver, By.xpath("//div[@class='logo logo-w']"));
-		return PageFactory.initElements(driver, SignInPage.class); 
+		return PageFactory.initElements(driver, SignInPage.class);
 	}
 
 	public boolean isInboxExists(WebDriver driver) {
