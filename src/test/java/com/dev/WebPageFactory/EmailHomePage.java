@@ -11,6 +11,8 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import com.dev.Library.utils;
+
 /**
  * @author Akash Dev
  *
@@ -18,16 +20,15 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class EmailHomePage {
 
 	public static SignInPage signOut(WebDriver driver) {
-		driver.findElement(By.xpath("//span[@class='gb_Za gbii']")).click();
-		driver.manage().timeouts().implicitlyWait(200, TimeUnit.MILLISECONDS);
-		driver.findElement(By.xpath(".//*[@id='gb_71']")).click();
-		WebDriverWait wait = new WebDriverWait(driver, 3000);
-		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='logo logo-w']")));
+		utils.click(driver, By.xpath("//span[@class='gb_Za gbii']"));
+		utils.wait(driver, 200, TimeUnit.MILLISECONDS);
+		utils.click(driver, By.xpath(".//*[@id='gb_71']"));
+		utils.waitForElementVisible(driver, By.xpath("//div[@class='logo logo-w']"));
 		return PageFactory.initElements(driver, SignInPage.class); 
 	}
 
 	public boolean isInboxExists(WebDriver driver) {
-		return driver.findElements(By.partialLinkText("Inbox")).size() > 0;
+		return utils.isElementPresent(driver, By.partialLinkText("Inbox"));
 	}
 
 }
