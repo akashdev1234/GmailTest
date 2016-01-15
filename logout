@@ -1,0 +1,41 @@
+[33mcommit 1b1f829329d8c3c4c43e1209178e4671c1f28053[m
+Author: Akash Dev <epatchdev1234@gmail.com>
+Date:   Fri Jan 15 01:54:51 2016 +0530
+
+    adding email send and recieve method
+
+[33mcommit f80914c9b5330346711bcff626cbc7770cd4df17[m
+Author: Akash Dev <epatchdev1234@gmail.com>
+Date:   Thu Jan 14 19:49:10 2016 +0530
+
+    refactored pagefactory by utils class
+
+[33mcommit d10a6e50a02945e8ac7a220fe398248bbae86194[m
+Author: Akash Dev <epatchdev1234@gmail.com>
+Date:   Thu Jan 14 16:54:04 2016 +0530
+
+    page factoring is done for signin and signnout
+
+[33mcommit 7935b5ee2c15a97d272b4223c4230c7b44f6f0f9[m
+Author: Akash Dev <epatchdev1234@gmail.com>
+Date:   Sat Jan 9 02:04:37 2016 +0530
+
+    added logout and check functionality
+
+[33mcommit 23c481fd0d3d42f7e986fe596e34a234af4ddfa7[m
+Author: Akash Dev <epatchdev1234@gmail.com>
+Date:   Sat Jan 9 01:27:27 2016 +0530
+
+    normal commit
+
+[33mcommit 5dc077bba6a320b5d456da75cc692957c4159ab0[m
+Author: Akash Dev <epatchdev1234@gmail.com>
+Date:   Sat Jan 9 01:05:56 2016 +0530
+
+    Renamed package name pom to page factory
+
+[33mcommit 38629a6a244a8b7b07c0d44e76597bb4569108d1[m
+Author: Akash Dev <epatchdev1234@gmail.com>
+Date:   Sat Jan 9 00:52:48 2016 +0530
+
+    Initial comit only login no logout
