@@ -12,7 +12,9 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import com.dev.Library.utils;
@@ -25,10 +27,9 @@ import com.dev.WebPageFactory.SignInPage;
  */
 public class GmailTest {
 
-	WebDriver driver = new FirefoxDriver();
-
 	@Test
 	public void SignIn() {
+		WebDriver driver = new FirefoxDriver();
 		// Goto Gmail website
 		SignInPage signInPage = utils.gotoSignIn(driver);
 		// fill in username
@@ -45,10 +46,12 @@ public class GmailTest {
 		emailHomepage.signOut(driver);
 		// verify if user signout
 		Assert.assertTrue(signInPage.isElementExists(driver), "Need help should appear");
+		driver.quit();
 	}
 
 	@Test
 	public void chekEmail() {
+		WebDriver driver = new FirefoxDriver();
 		// Goto Gmail website
 		SignInPage signInPage = utils.gotoSignIn(driver);
 		// fill in username
@@ -62,43 +65,36 @@ public class GmailTest {
 		// verify login
 		Assert.assertTrue(emailHomepage.isInboxExists(driver), "Inbox Should exist");
 		// click compose
-		driver.findElement(By.cssSelector("div[gh='cm']")).click();
-		// fill in recipent
-		driver.findElement(By.cssSelector("textarea[class='vO']")).sendKeys("testgit1234@gmail.com");
-		// fill in subject
-		final String Subject = "Verification Mail";
-		driver.findElement(By.xpath(".//form/div[3]/input")).sendKeys(Subject);
-		// fill in email body
-		// utils.wait(driver, 5, TimeUnit.SECONDS);
-		WebElement area = driver.findElement(By.xpath(".//*[@role='textbox']"));
-		area.clear();
-		area.sendKeys("This is a test mail");
-		// click send
-		WebElement btn = driver.findElement(By.xpath("//*[@role='button' and .='Send']"));
-		btn.click();
-		// click inbox
-		WebDriverWait wait = new WebDriverWait(driver, 3000);
-		wait.until(ExpectedConditions.visibilityOfElementLocated(By.linkText("Inbox (1)")));
-		WebElement element = driver.findElement(By.linkText("Inbox (1)"));
-		element.click();
-		// check email
+		emailHomepage.clickCompose(driver);
 
-		driver.findElement(By.cssSelector("div[class='y6'] span[id] b")).click();
+		// fill in recipent
+		emailHomepage.fillRecipent(driver, "testgit1234@gmail.com");
+
+		// fill in subject
+		emailHomepage.fillSubject(driver, "Verification Mail");
+
+		// fill in email body
+		emailHomepage.fillBody(driver, "This is a test mail");
+
+		// click send
+		emailHomepage.EmailSend(driver);
+
+		// click inbox
+		utils.waitForElementVisible(driver, By.linkText("Inbox (1)"));
+		emailHomepage.inboxClick(driver);
+
+		// check email
+		emailHomepage.checkEmail(driver);
 
 		// verify the email subject and email body is correct
-		Assert.assertTrue(driver.findElements(By.xpath(".//div/h2[text()='Verification Mail']")).size() > 0);
-		Assert.assertTrue(driver.findElements(By.xpath("//div[contains(.,'This is a test mail')]")).size() > 0,
-				"Email body should be same");
+
+		Assert.assertTrue(emailHomepage.isSubjectTextSame(driver), "Email Subject should be same");
+		Assert.assertTrue(emailHomepage.isBodyTextSame(driver), "Email body should be same");
 		utils.wait(driver, 5, TimeUnit.SECONDS);
 		// signout
 		emailHomepage.signOut(driver);
 		// verify if user signout
 		Assert.assertTrue(signInPage.isElementExists(driver), "Need help should appear");
+		driver.quit();
 	}
-
-	@AfterTest
-	public void close() {
-		driver.close();
-	}
-
 }

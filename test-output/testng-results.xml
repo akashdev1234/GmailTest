@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" total="1" passed="1">
+<testng-results skipped="0" failed="0" total="2" passed="2">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="61214" started-at="2016-01-15T21:42:19Z" finished-at="2016-01-15T21:43:20Z">
+  <suite name="Default suite" duration-ms="149012" started-at="2016-01-17T09:27:54Z" finished-at="2016-01-17T09:30:23Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="61214" started-at="2016-01-15T21:42:19Z" finished-at="2016-01-15T21:43:20Z">
+    <test name="Default test" duration-ms="149012" started-at="2016-01-17T09:27:54Z" finished-at="2016-01-17T09:30:23Z">
       <class name="com.dev.GmailTest.GmailTest">
-        <test-method status="PASS" signature="chekEmail()[pri:0, instance:com.dev.GmailTest.GmailTest@130a42c]" name="chekEmail" duration-ms="61002" started-at="2016-01-16T03:12:19Z" finished-at="2016-01-16T03:13:20Z">
+        <test-method status="PASS" signature="SignIn()[pri:0, instance:com.dev.GmailTest.GmailTest@1531931]" name="SignIn" duration-ms="77910" started-at="2016-01-17T14:57:54Z" finished-at="2016-01-17T14:59:12Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- SignIn -->
+        <test-method status="PASS" signature="chekEmail()[pri:0, instance:com.dev.GmailTest.GmailTest@1531931]" name="chekEmail" duration-ms="70947" started-at="2016-01-17T14:59:12Z" finished-at="2016-01-17T15:00:23Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- chekEmail -->
-        <test-method status="PASS" signature="close()[pri:0, instance:com.dev.GmailTest.GmailTest@130a42c]" name="close" is-config="true" duration-ms="22" started-at="2016-01-16T03:13:20Z" finished-at="2016-01-16T03:13:20Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- close -->
       </class> <!-- com.dev.GmailTest.GmailTest -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
