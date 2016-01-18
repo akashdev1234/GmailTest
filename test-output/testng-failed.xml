@@ -6,4 +6,14 @@
       <class name="com.dev.GmailTest.GmailTest"/>
     </classes>
   </test> <!-- Default test -->
+  <test name="Default test(failed)">
+    <classes>
+      <class name="com.dev.GmailTest.GmailTest">
+        <methods>
+          <include name="TearDown"/>
+          <include name="chekEmail"/>
+        </methods>
+      </class> <!-- com.dev.GmailTest.GmailTest -->
+    </classes>
+  </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
